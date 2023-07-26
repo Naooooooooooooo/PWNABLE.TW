@@ -45,7 +45,7 @@ Checksec
 
 Check for process mapping then i see that it doesn't use libc
 
-![](https://hackmd.io/_uploads/rkxvELCqh.png)
+![](https://hackmd.io/_uploads/Bklw48Cqh.png)
 
 
 * Then decompile the program with `ida` i see that many functions in libc is in the program. In other word, this program is a libc. But it doesn't have some functions tho
