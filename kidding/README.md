@@ -1,4 +1,4 @@
-
+# kidding
 
 The challenge gives us a file without libc
 
