@@ -4,7 +4,7 @@ The challenge gives us a file without libc
 
 Running it
 
-![](https://hackmd.io/_uploads/BkkwUBRqn.png)
+ ![](https://hackmd.io/_uploads/BkkwUBRqn.png)
 
 The program gets an input then ends
 
