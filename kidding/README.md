@@ -4,7 +4,7 @@ The challenge gives us a file without libc
 
 Running it
 
-![](https://hackmd.io/_uploads/BkkwUBRqn.png)
+![](https://hackmd.io/_uploads/H1xv4I0qn.png)
 
 The program gets an input then ends
 
@@ -45,7 +45,7 @@ Checksec
 
 Check for process mapping then i see that it doesn't use libc
 
-![](https://hackmd.io/_uploads/S1hSDrR5h.png)
+![](https://hackmd.io/_uploads/rkxvELCqh.png)
 
 
 * Then decompile the program with `ida` i see that many functions in libc is in the program. In other word, this program is a libc. But it doesn't have some functions tho
@@ -77,7 +77,7 @@ unsigned int __usercall dl_make_stack_executable@<eax>(_DWORD *a1@<eax>)
 
 * To make it work, the argument must be `_libc_stack_end`, then it call `mprotect` with `prot` is stored in a global variable called `__stack_prot`. First `__stack_prot` contain `0x100000`
 
-![](https://hackmd.io/_uploads/BJ7VoBC93.png)
+![](https://hackmd.io/_uploads/r1lvEI09n.png)
 
 * So i have to change it to `0x7` (PROT_READ | PROT_WRITE | PROT_EXEC)
 
@@ -166,7 +166,7 @@ int 0x80
 * So in server side it has to send the remained shellcode
 * Calculate the distance between `esp` and `eip` to write shellcode at right place
 
-![](https://hackmd.io/_uploads/BkOS-I092.png)
+![](https://hackmd.io/_uploads/BJxw4U0cn.png)
 
 * So my payload will be like
 
@@ -176,12 +176,12 @@ b'A'*0x3c + shell
 
 Running it
 
-![](https://hackmd.io/_uploads/SkJsZIR9n.png)
+![](https://hackmd.io/_uploads/r1ew4L0c3.png)
 
 Success get a shell in the program
 
 Checking in server side
 
-![](https://hackmd.io/_uploads/B12nbIAch.png)
+![](https://hackmd.io/_uploads/HyevN8A93.png)
 
 It works but i don't have any server to check if my solution is true. 
